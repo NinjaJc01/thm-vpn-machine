@@ -1,0 +1,13 @@
+[Unit]
+Description=Webserver
+
+[Service]
+User=tryhackme
+Group=tryhackme
+WorkingDirectory=/home/tryhackme
+ExecStart=/home/tryhackme/server -p 80
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
