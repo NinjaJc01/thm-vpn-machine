@@ -7,7 +7,21 @@
     <title>TryHackMe VPN test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
+    <script>
+        async function getData(url = '') {
+            const response = await fetch(url, {
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                referrerPolicy: 'no-referrer', // no-referrer, *client
+            });
+            return await response.text();
+        }
+        async function onPageLoad() {
+            const myIp = await getData("/whoami");
+            console.log(myIp);
+            document.getElementById("myIp").textContent = myIp;
+        }
+    </script>
 </head>
 
 <body onload="onPageLoad()">
